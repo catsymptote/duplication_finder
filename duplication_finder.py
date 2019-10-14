@@ -24,9 +24,9 @@ excludeFolders  = True
 
 # Folders to be excluded.
 excludedFolders   = [
-    "venv",
-    "test2",
-    "test\\example"
+    "venv", ".idea",
+    "test2", "test\\example",
+	".git", ".vscode"
 ]
 
 ##########################################
@@ -36,9 +36,6 @@ excludedFolders   = [
 
 import os
 import hashlib
-import sys
-import re
-import string
 
 
 
@@ -264,19 +261,19 @@ def run():
 
 
 
-
 directory   = os.getcwd()
+
+# Get all files, and remove excluded files. (See settings)
 file_list   = get_files(directory)
 if(excludeFolders):
     purge_folders()
     print("Excluded folders:\t" + str(excludedFolders))
 
-
+# Check lists
 hash_list   = get_hash_list(file_list)
 name_list   = get_name_list(file_list)
 size_list   = get_size_list(file_list)
 ## Adding new parallel lists? Remember to add to the "matches" print function.
-
 
 
 run()
